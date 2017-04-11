@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 ///local dependencies:
 const {PORT, DATABASE_URL, TEST_DATABASE_URL} = require('./config');
-const {Quiz, TestQuiz} = require('./models');
+const TestQuiz = require('./models');
 
 ///app instantiation:
 const app = express();
@@ -15,36 +15,58 @@ app.use('/modules', express.static(__dirname + '/node_modules/'));
 // app.use(webpack);
 
 
-///routes:
-app.get('/welcome', (req, res)=>{
-	console.log('reached the welcome page');
-	/////this should be the real quiz, after confirmed testing:
-	Quiz
-	.find()
+// ///routes:
+// app.get('/welcome', (req, res)=>{
+// 	console.log('reached the welcome page');
+// 	/////this should be the real quiz, after confirmed testing:
+// 	Quiz
+// 	.find()
+// 	.exec()
+// 	.then(quiz=>{
+// 		res.json(quiz.map(quiz=>quiz.apiRepr()))
+// 	})
+// 	.catch(err=>{
+// 		console.log(err);
+// 		res.status(500).json({error:'Oops, something went wrong.'});
+// 	});
+// });
+
+
+// app.get('/smokeTest', (req, res)=>{
+// 	console.log('smoke test called', Quiz);
+// 	Quiz
+// 	.find()
+// 	.exec()
+// 	.then(setup=>{
+// 		res.json(setup.map(setup =>setup.apiRepr()));
+// 	})
+// 	.catch(err=>{
+// 		console.log(err);
+// 		res.status(500).json({message: 'something wrong happened'});
+// 	});
+// });
+
+app.get('/quiz', (req, res)=>{
+	console.log('quiz called', TestQuiz);
+	TestQuiz
+	.findOne()
 	.exec()
-	.then(quiz=>{
-		res.json(quiz.map(quiz=>quiz.apiRepr()))
-	})
+	.then(testQuiz =>res.json({
+			question: testQuiz.question,
+			answers: testQuiz.answers
+	}))
 	.catch(err=>{
 		console.log(err);
-		res.status(500).json({error:'Oops, something went wrong.'});
+		res.status(500).json({message:'something went wrong'});
 	});
 });
 
-
-app.get('/smokeTest', (req, res)=>{
-	console.log('smoke test called', Quiz);
-	Quiz
-	.find()
-	.exec()
-	.then(setup=>{
-		res.json(setup.map(setup =>setup.apiRepr()));
-	})
-	.catch(err=>{
-		console.log(err);
-		res.status(500).json({message: 'something wrong happened'});
-	});
-});
+// app.get('/QuizYou', (req, res) => {
+// 	res.json(Quiz.get());
+// 	console.log(`get the quiz info`);
+	
+// 	res.status(201).send("you, you, you");
+// });
 
 
 let server;

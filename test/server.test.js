@@ -11,8 +11,6 @@ const {runServer, app, closeServer, server} = require('../server');
 const {DATABASE_URL, TEST_DATABASE_URL} = require('../config');
 
 
-// import {runServer, seedQuizzesData, closeServer, tearDownDb} from './test.server';
-
 chai.use(chaiHttp);
 
 
@@ -90,33 +88,37 @@ describe('Quiz', function(){
 
 
 	describe('smoke test on node', function(){
-		//res was undefined
-		it('should reach teh database and return anything', function(){
-			let res;
-			return chai.request(app)
-				.get('/SmokeTest')
+		it('should return the question and answer on testquiz request', function(done){
+			try{
+				let res;
+				return chai.request(app)
+				.get('/quiz')
 				.then(_res=>{
-					res = _res;
+					res=_res;
 					res.should.have.status(200);
-					// res.should.not.be('');
-				});
+					res.should.be.json;
+					res.body.should.be.a('object');
+					res.body.should.have.length.of.at.least(2);
+					res.body.forEach(function(item){
+						item.should.be.a('object');
+						item.should.have.all.keys(
+							'question', 'answers'
+						)
+					})
+				})
+				.catch((err)=>{
+					console.log(err);
+					res.status(500).json({error:'oops, something went wrong in the test get call'});
+				})
+				done()
+			}
+			catch(error){
+				reject(error);
+			}
 		});
-		console.log('smoke test executed');
-	// 	it('should serve an html page whenever a route is reached', function(){
-	// 		// console.log(chai, 'chai here');
-	// 		return chai.request(app)
-	// 		.get('/')
-	// 		.expect('Content-Type', /html/)
-	// 		.expect(200)
-	// 		.then(res => expect(res.text).to.contain('<div id="root"></div>'));
-	// 	});
 	});
 });
 
 
-
-
-
-
-module.exports = {runServer, seedQuizzesData, closeServer, tearDownDb};
+// module.exports = {runServer, seedQuizzesData, closeServer, tearDownDb};
 
