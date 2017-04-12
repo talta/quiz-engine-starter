@@ -7,7 +7,7 @@ const should = chai.should();
 
 ///internal dependencies:
 const Quiz = require('../models');
-const {runServer, app, closeServer, server} = require('../server');
+const {app, server} = require('../server');
 const {DATABASE_URL, TEST_DATABASE_URL} = require('../config');
 
 
@@ -74,17 +74,17 @@ describe('Quiz', function(){
 // 	});
 
 ///////old method for starting and closing the server:
-	beforeEach(function(done){
-		runServer(TEST_DATABASE_URL);
-		console.log('server running');
-		// return seedQuizzesData();
-		done();
-	});
-	afterEach(function(){
-		closeServer();
-		console.log('closed the DB');
-		// return closeServer();
-	});
+	// beforeEach(function(done){
+	// 	runServer(TEST_DATABASE_URL);
+	// 	console.log('server running');
+	// 	// return seedQuizzesData();
+	// 	done();
+	// });
+	// afterEach(function(){
+	// 	closeServer();
+	// 	console.log('closed the DB');
+	// 	// return closeServer();
+	// });
 
 
 	describe('smoke test on node', function(){
@@ -98,17 +98,20 @@ describe('Quiz', function(){
 					res.should.have.status(200);
 					res.should.be.json;
 					res.body.should.be.a('object');
-					res.body.should.have.length.of.at.least(2);
-					res.body.forEach(function(item){
+					res.body.answers.forEach(function(item){
 						item.should.be.a('object');
 						item.should.have.all.keys(
-							'question', 'answers'
-						)
-					})
+							'message', 'correct'
+						);
+						// item.forEach(function(answer){
+						// 	item.should.have.length.of.at.least(5);
+						// })
+						// item.should.have.length.of.at.least(5);
+					});
 				})
 				.catch((err)=>{
 					console.log(err);
-					res.status(500).json({error:'oops, something went wrong in the test get call'});
+					// res.status(500).json({error:'oops, something went wrong in the test get call'});
 				})
 				done()
 			}

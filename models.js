@@ -2,43 +2,22 @@ const mongoose = require('mongoose');
 
 const QuizSchema = new mongoose.Schema({
 		question: {type: String},
-		answers: {type: String}
-		// [
-		// 	{
-		// 		message: {type:String},
-		// 		correct: {type: Boolean}
-		// 	}
-		// ]
+		answers: [{
+			message: {type: String},
+			correct: {type: Boolean}
+		}]
+
 });
 
 
 QuizSchema.methods.apiRepr = function(){
 	return{
 			question: this.question,
-			answers: this.answers
-			// [
-			// 	{
-			// 		message:this.message,
-			// 		correct: this.Correct
-
-			// 	},
-			// 	{
-			// 		message:this.message,
-			// 		correct: this.Correct
-
-			// 	},
-			// 	{
-			// 		message:this.message,
-			// 		correct: this.Correct
-
-			// 	},
-			// 	{
-			// 		message:this.message,
-			// 		correct: this.Correct
-
-			// 	}
-			// ]
-
+			answers: [{
+				message: this.message,
+				correct: this.correct
+			}
+			]
 	};
 };
 

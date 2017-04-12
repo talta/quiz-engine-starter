@@ -12,48 +12,35 @@ const app = express();
 mongoose.Promise = global.Promise;
 app.use(express.static('public'));
 app.use('/modules', express.static(__dirname + '/node_modules/'));
-// app.use(webpack);
 
-
-// ///routes:
-// app.get('/welcome', (req, res)=>{
-// 	console.log('reached the welcome page');
-// 	/////this should be the real quiz, after confirmed testing:
-// 	Quiz
-// 	.find()
-// 	.exec()
-// 	.then(quiz=>{
-// 		res.json(quiz.map(quiz=>quiz.apiRepr()))
-// 	})
-// 	.catch(err=>{
-// 		console.log(err);
-// 		res.status(500).json({error:'Oops, something went wrong.'});
-// 	});
-// });
-
-
-// app.get('/smokeTest', (req, res)=>{
-// 	console.log('smoke test called', Quiz);
-// 	Quiz
-// 	.find()
-// 	.exec()
-// 	.then(setup=>{
-// 		res.json(setup.map(setup =>setup.apiRepr()));
-// 	})
-// 	.catch(err=>{
-// 		console.log(err);
-// 		res.status(500).json({message: 'something wrong happened'});
-// 	});
-// });
 
 app.get('/quiz', (req, res)=>{
-	console.log('quiz called', TestQuiz);
+	// console.log('quiz called', TestQuiz);
 	TestQuiz
 	.findOne()
 	.exec()
 	.then(testQuiz =>res.json({
 			question: testQuiz.question,
-			answers: testQuiz.answers
+			answers: [{
+				message: testQuiz.answers[0].message,
+				correct: testQuiz.answers[0].correct
+			},
+			{
+				message: testQuiz.answers[1].message,
+				correct: testQuiz.answers[1].correct
+			},
+			{
+				message: testQuiz.answers[2].message,
+				correct: testQuiz.answers[2].correct
+			},
+			{
+				message: testQuiz.answers[3].message,
+				correct: testQuiz.answers[3].correct
+			},
+			{
+				message: testQuiz.answers[4].message,
+				correct: testQuiz.answers[4].correct
+			}]
 	}))
 	.catch(err=>{
 		console.log(err);
@@ -61,11 +48,19 @@ app.get('/quiz', (req, res)=>{
 	});
 });
 
-// app.get('/QuizYou', (req, res) => {
-// 	res.json(Quiz.get());
-// 	console.log(`get the quiz info`);
-	
-// 	res.status(201).send("you, you, you");
+/////a simplier way to start the server and database:
+// const databaseUrl = TEST_DATABASE_URL;
+// const port=PORT
+
+// mongoose.connect(databaseUrl, err =>{
+// 	if(err){
+// 		mongoose.disconnect();
+// 		return reject(err);
+// 	}
+// });
+
+// app.listen(port, () =>{
+// 	console.log(`your app is listening on post ${port}`);
 // });
 
 
@@ -78,7 +73,7 @@ function runServer(databaseUrl = TEST_DATABASE_URL, port=PORT){
 				return reject(err);
 			}
 			app.listen(port, () =>{
-				console.log(`your app is listening on post ${port}`);
+				console.log(`your app is listening on port ${port}`);
 				resolve();
 			})
 			.on('error', err =>{
@@ -86,6 +81,7 @@ function runServer(databaseUrl = TEST_DATABASE_URL, port=PORT){
 				reject(err);
 			});
 		});
+		resolve();
 	});
 };
 
@@ -101,6 +97,7 @@ function closeServer() {
       }
       resolve();
     });
+    resolve();
   });
 }
 
@@ -108,4 +105,4 @@ if(require.main === module){
 	runServer().catch(err => console.error(err));
 };
 
-module.exports = {runServer, app, closeServer};
+module.exports = { app};
