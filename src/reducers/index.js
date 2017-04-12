@@ -2,12 +2,12 @@ import * as actions from '../actions';
 
 const initialState = {};
 
-export function quizReducer= (state, action)=>{
-	state = state;
+export function quizReducer= (instialState, action)=>{
+	const state = initialState;
 
 	switch(action.type){
 		case 'SELECT_QUIZ':
-			return quiz ///this needs to be changed
+			return state ///this needs to be changed
 
 		default: 
 			return state
