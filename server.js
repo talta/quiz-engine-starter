@@ -20,27 +20,32 @@ app.get('/quiz', (req, res)=>{
 	.findOne()
 	.exec()
 	.then(testQuiz =>res.json({
+		////{this.props.answers.map((item, i)=>(
 			question: testQuiz.question,
-			answers: [{
-				message: testQuiz.answers[0].message,
-				correct: testQuiz.answers[0].correct
-			},
-			{
-				message: testQuiz.answers[1].message,
-				correct: testQuiz.answers[1].correct
-			},
-			{
-				message: testQuiz.answers[2].message,
-				correct: testQuiz.answers[2].correct
-			},
-			{
-				message: testQuiz.answers[3].message,
-				correct: testQuiz.answers[3].correct
-			},
-			{
-				message: testQuiz.answers[4].message,
-				correct: testQuiz.answers[4].correct
-			}]
+			answers: testQuiz.answers.map((item, i)=>({
+				message: item.message,
+				correct: item.correct
+			}))
+			// answers: [{
+			// 	message: testQuiz.answers[0].message,
+			// 	correct: testQuiz.answers[0].correct
+			// },
+			// {
+			// 	message: testQuiz.answers[1].message,
+			// 	correct: testQuiz.answers[1].correct
+			// },
+			// {
+			// 	message: testQuiz.answers[2].message,
+			// 	correct: testQuiz.answers[2].correct
+			// },
+			// {
+			// 	message: testQuiz.answers[3].message,
+			// 	correct: testQuiz.answers[3].correct
+			// },
+			// {
+			// 	message: testQuiz.answers[4].message,
+			// 	correct: testQuiz.answers[4].correct
+			// }]
 	}))
 	.catch(err=>{
 		console.log(err);
