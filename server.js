@@ -26,26 +26,6 @@ app.get('/quiz', (req, res)=>{
 				message: item.message,
 				correct: item.correct
 			}))
-			// answers: [{
-			// 	message: testQuiz.answers[0].message,
-			// 	correct: testQuiz.answers[0].correct
-			// },
-			// {
-			// 	message: testQuiz.answers[1].message,
-			// 	correct: testQuiz.answers[1].correct
-			// },
-			// {
-			// 	message: testQuiz.answers[2].message,
-			// 	correct: testQuiz.answers[2].correct
-			// },
-			// {
-			// 	message: testQuiz.answers[3].message,
-			// 	correct: testQuiz.answers[3].correct
-			// },
-			// {
-			// 	message: testQuiz.answers[4].message,
-			// 	correct: testQuiz.answers[4].correct
-			// }]
 	}))
 	.catch(err=>{
 		console.log(err);
