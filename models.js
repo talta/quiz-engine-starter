@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const QuizSchema = new mongoose.Schema({
-		question: {type: String},
-		answers: [{
-			message: {type: String},
-			correct: {type: Boolean}
-		}]
-
+			question: {type: String},
+			answers:
+			[{
+				message: {type: String},
+				correct: {type: Boolean}
+			}]
 });
 
 
