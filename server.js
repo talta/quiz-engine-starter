@@ -2,7 +2,7 @@
 ////external dependencies:
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors  = require('cors');
 
 ///local dependencies:
 const {PORT, DATABASE_URL, TEST_DATABASE_URL} = require('./config');
@@ -10,45 +10,45 @@ const TestQuiz = require('./models');
 
 ///app instantiation:
 const app = express();
-const router = new express.Router();
+
+//using the promise library for mongoose and setting that as a default:
+//mongoose promise implementation
 mongoose.Promise = global.Promise;
+///need to have a public folder:
 app.use(express.static('public'));
-app.use('/', router);
+app.use(cors());
+////look into this use:
 app.use('/modules', express.static(__dirname + '/node_modules/'));
 
 
-
-
-
-
-
-router.get('/quiz', cors(), (req, res)=>{
-	// console.log('quiz called', TestQuiz);
+app.get('/quiz', (req, res)=>{
+	console.log('quiz called', TestQuiz);
 	TestQuiz
 	.findOne()
 	.exec()
 	.then(testQuiz =>res.json({
-				question: testQuiz.question,
-				answers: [{
-					message: testQuiz.answers[0].message,
-					correct: testQuiz.answers[0].correct
-					},
-					{
-					message: testQuiz.answers[1].message,
-					correct: testQuiz.answers[1].correct
-					},
-					{
-					message: testQuiz.answers[2].message,
-					correct: testQuiz.answers[2].correct
-					},
-					{
-					message: testQuiz.answers[3].message,
-					correct: testQuiz.answers[3].correct
-					},
-					{
-					message: testQuiz.answers[4].message,
-					correct: testQuiz.answers[4].correct
-				}]	
+		/////potential to build this object somewhere else more dynamically:
+			question: testQuiz.question,
+			answers: [{
+				message: testQuiz.answers[0].message,
+				correct: testQuiz.answers[0].correct
+			},
+			{
+				message: testQuiz.answers[1].message,
+				correct: testQuiz.answers[1].correct
+			},
+			{
+				message: testQuiz.answers[2].message,
+				correct: testQuiz.answers[2].correct
+			},
+			{
+				message: testQuiz.answers[3].message,
+				correct: testQuiz.answers[3].correct
+			},
+			{
+				message: testQuiz.answers[4].message,
+				correct: testQuiz.answers[4].correct
+			}]
 	}))
 	.catch(err=>{
 		console.log(err);
@@ -71,52 +71,50 @@ router.get('/quiz', cors(), (req, res)=>{
 // 	console.log(`your app is listening on post ${port}`);
 // });
 
-// const server = app.listen(app.get('port'), function(){
-// 	console.log
-// })
 
+let server;
 
+///potentially a default in ES6
+////potenail rewrite to make work:
 function runServer(databaseUrl = TEST_DATABASE_URL, port=PORT){
 	return new Promise((resolve, reject)=>{
 		mongoose.connect(databaseUrl, err =>{
-			if(err){
-				return reject(err);
-			}
-			app.listen(app.get(port), () =>{
+			app.listen(port, () =>{
 				console.log(`your app is listening on port ${port}`);
 				resolve();
 			})
 			.on('error', err =>{
+				console.log('on error occured in runserver', err);
 				mongoose.disconnect();
 				reject(err);
-			});
+			})
+			// .catch(err=>{
+			// 	console.log(err);
+			// 	res.status(500).json({message:'something went wrong'});
+			// })
 		});
-		resolve();
 	});
+	
 };
 
 
 function closeServer() {
 	console.log('closing the server from server.js');
-  	return new Promise((resolve, reject) => {
-	    console.log('Closing server');
-	    server.close(err => {
-	      if (err) {
-	        reject(err);
-	        return;
-	      }
-	 	   resolve();
-	    })
-	    .catch(err=>{
-			console.log(err);
-			res.status(500).json({message:'something went wrong'});
-		});
-
-	});
+  return new Promise((resolve, reject) => {
+    console.log('Closing server');
+    server.close(err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+    resolve();
+  });
 }
 
 if(require.main === module){
 	runServer().catch(err => console.error(err));
 };
 
-module.exports = { app};
+module.exports = {app};
