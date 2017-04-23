@@ -21,35 +21,55 @@ app.use(cors());
 app.use('/modules', express.static(__dirname + '/node_modules/'));
 
 
+
+
+		/////potential to build this object somewhere else more dynamically:
+/////{this.props.answers.map((answer, index)=>(
+            // <div key={index}>
+            //   <input value={answer.message} 
+
+				
+			// question: testQuiz.questions.question,
+			// index: testQuiz.questions.index,
+			// answers: [{
+			// 	message: testQuiz.questions.answers[0].message,
+			// 	correct: testQuiz.questions.answers[0].correct
+			// },
+			// {
+			// 	message: testQuiz.questions.answers[1].message,
+			// 	correct: testQuiz.questions.answers[1].correct
+			// },
+			// {
+			// 	message: testQuiz.questions.answers[2].message,
+			// 	correct: testQuiz.questions.answers[2].correct
+			// },
+			// {
+			// 	message: testQuiz.questions.answers[3].message,
+			// 	correct: testQuiz.questions.answers[3].correct
+			// },
+			// {
+			// 	message: testQuiz.questions.answers[4].message,
+			// 	correct: testQuiz.questions.answers[4].correct
+			// }]
+
 app.get('/quiz', (req, res)=>{
 	console.log('quiz called', TestQuiz);
 	TestQuiz
-	.findOne()
-	.exec()
-	.then(testQuiz =>res.json({
-		/////potential to build this object somewhere else more dynamically:
-			question: testQuiz.question,
-			answers: [{
-				message: testQuiz.answers[0].message,
-				correct: testQuiz.answers[0].correct
-			},
-			{
-				message: testQuiz.answers[1].message,
-				correct: testQuiz.answers[1].correct
-			},
-			{
-				message: testQuiz.answers[2].message,
-				correct: testQuiz.answers[2].correct
-			},
-			{
-				message: testQuiz.answers[3].message,
-				correct: testQuiz.answers[3].correct
-			},
-			{
-				message: testQuiz.answers[4].message,
-				correct: testQuiz.answers[4].correct
-			}]
-	}))
+	.find({}, function(err, testQuiz){
+		console.log('Test Quiz from 62: ', testQuiz);
+		return res.status(200).json(testQuiz)
+			/////this logs the data
+	// 		testQuiz
+	// 	// 	data: testQuiz.map(
+	// 	// 		quiz=>quiz.apiRepr()
+	// 	// 	)
+	// 	// })
+	// })
+	// .exec()
+	// .then(testQuiz =>res.json({
+	// 	data: testQuiz.data
+	})
+
 	.catch(err=>{
 		console.log(err);
 		res.status(500).json({message:'something went wrong'});
