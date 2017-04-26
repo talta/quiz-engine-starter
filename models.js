@@ -5,10 +5,10 @@ const QuizSchema = new mongoose.Schema({
 		questions: [{
 			question: {type: String},
 			index: {type: Number},
+			answer: {type: String},
 			answers:
 			[{
-				message: {type: String},
-				correct: {type: Boolean}
+				message: {type: String}
 			}]
 		}]
 });
@@ -20,9 +20,9 @@ QuizSchema.methods.apiRepr = function(){
 		questions:[{
 			question: this.question,
 			index: this.index,
+			answer: this.answer,
 			answers: [{
-				message: this.message,
-				correct: this.correct
+				message: this.message
 			}]
 		}]
 	};
@@ -34,6 +34,5 @@ QuizSchema.methods.apiRepr = function(){
 
 const Quiz = mongoose.model('TestQuiz', QuizSchema);
 const TestQuiz = mongoose.model('tests', QuizSchema);
-// console.log(TestQuiz);
 
 module.exports = TestQuiz;
