@@ -23,10 +23,9 @@
 // }
 
 
-NODE_ENV= production;
 
 
-if(NODE_ENV==='production'){
+if(process.env.NODE_ENV==='production'){
   exports.DATABASE_URL= process.env.DATABASE_URL;
   exports.PORT = process.env.PORT; 
 } else {
