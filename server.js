@@ -6,7 +6,7 @@ const cors  = require('cors');
 
 ///local dependencies:
 const {PORT, DATABASE_URL} = require('./config');
-const TestQuiz = require('./models');
+const Quiz = require('./models');
 
 ///app instantiation:
 const app = express();
@@ -22,22 +22,16 @@ app.use(cors());
 
 
 app.get('/quiz', (req, res)=>{
-	try{
-		console.log('quiz called', TestQuiz);
-		TestQuiz
-		.find({}, function(err, testQuiz){
-			console.log('Test Quiz from 62: ', testQuiz);
-			return res.status(200).json(testQuiz)
+		console.log('quiz called', Quiz);
+		Quiz
+		.find({}, function(err, Quiz){
+			console.log('Quiz from Get: ', Quiz);
+			return res.status(200).json(Quiz)
 		})
 		.catch(err=>{
 			console.log(err);
 			res.status(500).json({message:'something went wrong'});
-		});
-	}
-	catch(err){
-		message.innerHTML = "Input is " + err;
-	}
-	
+		});	
 });
 
 
@@ -47,7 +41,7 @@ function runServer(databaseUrl = DATABASE_URL, port=PORT){
 	return new Promise((resolve, reject)=>{
 		mongoose.connect(databaseUrl, err =>{
 			app.listen(port, () =>{
-				console.log(`your app is listening on port ${port}, and process.end: ${JSON.stringify(process.env)}`);
+				console.log(`your app is listening on port ${port}, and ${databaseUrl}`);
 				resolve();
 			})
 			.on('error', err =>{

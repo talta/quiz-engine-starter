@@ -32,7 +32,7 @@ QuizSchema.methods.apiRepr = function(){
 
 
 
-const Quiz = mongoose.model('TestQuiz', QuizSchema);
-const TestQuiz = mongoose.model('tests', QuizSchema);
+const Quiz = mongoose.model('Quizengine', QuizSchema);
+const TestQuiz = mongoose.model('Tests', QuizSchema);
 
-module.exports = TestQuiz;
+module.exports = Quiz;
