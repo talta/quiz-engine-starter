@@ -47,7 +47,7 @@ function runServer(databaseUrl = DATABASE_URL, port=PORT){
 	return new Promise((resolve, reject)=>{
 		mongoose.connect(databaseUrl, err =>{
 			app.listen(port, () =>{
-				console.log(`your app is listening on port ${port}, and DB: ${databaseUrl}`);
+				console.log(`your app is listening on port ${port}, and process.end: ${process.env}`);
 				resolve();
 			})
 			.on('error', err =>{
