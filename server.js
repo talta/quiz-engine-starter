@@ -38,7 +38,7 @@ app.get('/quiz', (req, res)=>{
 
 let server;
 
-function runServer(databaseUrl = TEST_DATABASE_URL, port=PORT){
+function runServer(databaseUrl = DATABASE_URL, port=PORT){
 	return new Promise((resolve, reject)=>{
 		mongoose.connect(databaseUrl, err =>{
 			app.listen(port, () =>{
