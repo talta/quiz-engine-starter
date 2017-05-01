@@ -14,15 +14,15 @@
 	* produce a showcase react application which can be utilized as a portfolio piece in order to solicit job offers from a dev team which works on a similar product
 
 ## Initial UX:
-![Mock-up Welcome](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "Mock-up Welcome")
-![Mock-up Quiz](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "Mock-up Quiz")
-![Mock-up Question Answer](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "Mock-up Question Answer")
-![Mock-up Results](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "Mock-up Results")
+![Mock-up Welcome](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/MockUp_Welcome.Splash.png "Mock-up Welcome")
+![Mock-up Quiz](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/MockUp_Welcome.Quiz.png "Mock-up Quiz")
+![Mock-up Question Answer](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/MockUp_QuestionAndAnswer.png "Mock-up Question Answer")
+![Mock-up Results](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/MockUp_Results.png "Mock-up Results")
 
 ## Functionality:
-![Prioritized User Stories](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "Prioritized User Stories")
-![Requirements](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "Requirements")
-![Reqs Workflow](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "Requirements for Workflow")
+![Prioritized User Stories](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/PrioritizedUserStories.png "Prioritized User Stories")
+![Requirements](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/Reqs_Requirements.png "Requirements")
+![Reqs Workflow](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/Reqs_WorkFlow.png "Requirements for Workflow")
 
 
 ## Development Story:
@@ -68,8 +68,8 @@
 	- utilizing a KanBan Board, the development was broken into phases
 	- working through the burn chart, I was able to break the project into bite size chunks
 	- working from the server side development through to the client-side, features were implemented based on priority
-![KanBan BurnChart Workflow](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "KanBan BurnChart")
-![KanBan BurnChart Workflow](https://github.com/talta/markdown-here/raw/master/src/common/images/icon48.png "KanBan BurnChart Workflow")
+![KanBan BurnChart Workflow](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/ImplementationProcess_BurnChart.png "KanBan BurnChart")
+![KanBan BurnChart Workflow](https://github.com/talta/quiz-engine-starter/tree/master/assets/documentation/Implementation_BurnChart_Process.png "KanBan BurnChart Workflow")
 
 ## Vision:
 	- The Quiz application still requires a significant amount of improvements in order to be more user friendly.  
