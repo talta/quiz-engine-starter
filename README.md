@@ -14,15 +14,15 @@
 	* produce a showcase react application which can be utilized as a portfolio piece in order to solicit job offers from a dev team which works on a similar product
 
 ## Initial UX:
-<img src="./assets/documentation/MockUp_Welcome.Splash.png" width=100 height=100 alt="Mock-up Welcome">
-<img src="./assets/documentation/MockUp_Welcome.Quiz.png" width=100 height=100 alt="Mock-up Quiz">
-<img src="./assets/documentation/MockUp_QuestionAndAnswer.png" width=100 height=100 alt="Mock-up Question Answer">
-<img src="./assets/documentation/MockUp_Results.png" alt="Mock-up Results" width=100 height=100>
+<img src="./assets/documentation/MockUp_Welcome.Splash.png" width=250 height=250 alt="Mock-up Welcome">
+<img src="./assets/documentation/MockUp_Welcome.Quiz.png" width=250 height=250 alt="Mock-up Quiz">
+<img src="./assets/documentation/MockUp_QuestionAndAnswer.png" width=250 height=250 alt="Mock-up Question Answer">
+<img src="./assets/documentation/MockUp_Results.png" alt="Mock-up Results" width=250 height=250>
 
 ## Functionality:
-<img src="./assets/documentation/PrioritizedUserStories.png" width=100 height=100 alt="Prioritized User Stories">
-<img src="./assets/documentation/Reqs_Requirements.png" width=100 height=100 alt="Requirements">
-<img src="./assets/documentation/Reqs_WorkFlow.png" width=100 height=100 alt="Requirements for Workflow">
+<img src="./assets/documentation/PrioritizedUserStories.png" width=250 height=250 alt="Prioritized User Stories">
+<img src="./assets/documentation/Reqs_Requirements.png" width=250 height=250 alt="Requirements">
+<img src="./assets/documentation/Reqs_WorkFlow.png" width=250 height=250 alt="Requirements for Workflow">
 
 
 ## Development Story:
@@ -69,8 +69,8 @@
 * working through the burn chart, I was able to break the project into bite size chunks
 * working from the server side development through to the client-side, features were implemented based on priority
 
-<img src="./assets/documentation/ImplementationProcess_BurnChart.png" width=100 height=100 alt="KanBan BurnChart">
-<img src="./assets/documentation/Implementation_BurnChart_Process.png" width=100 height=100 alt="KanBan BurnChart Workflow">
+<img src="./assets/documentation/ImplementationProcess_BurnChart.png" width=250 height=250 alt="KanBan BurnChart">
+<img src="./assets/documentation/Implementation_BurnChart_Process.png" width=250 height=250 alt="KanBan BurnChart Workflow">
 
 ## Vision:
 * The Quiz application still requires a significant amount of improvements in order to be more user friendly.  
