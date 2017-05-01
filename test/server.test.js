@@ -62,30 +62,6 @@ function tearDownDb(){
 
 
 describe('Quiz', function(){
-// 	before((done)=>{
-// 		runServer((TEST_DATABASE_URL)=>{
-// 			done();			
-// 		});
-// 	});
-// 	after((done)=>{
-// 		closeServer(()=>{
-// 			done();
-// 		});
-// 	});
-
-///////old method for starting and closing the server:
-	// beforeEach(function(done){
-	// 	runServer(TEST_DATABASE_URL);
-	// 	console.log('server running');
-	// 	// return seedQuizzesData();
-	// 	done();
-	// });
-	// afterEach(function(){
-	// 	closeServer();
-	// 	console.log('closed the DB');
-	// 	// return closeServer();
-	// });
-
 
 	describe('smoke test on node', function(){
 		it('should return the question and answer on testquiz request', function(done){
@@ -111,7 +87,6 @@ describe('Quiz', function(){
 				})
 				.catch((err)=>{
 					console.log(err);
-					// res.status(500).json({error:'oops, something went wrong in the test get call'});
 				})
 				done()
 			}
@@ -121,7 +96,4 @@ describe('Quiz', function(){
 		});
 	});
 });
-
-
-// module.exports = {runServer, seedQuizzesData, closeServer, tearDownDb};
 
