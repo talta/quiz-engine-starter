@@ -14,15 +14,15 @@
 	* produce a showcase react application which can be utilized as a portfolio piece in order to solicit job offers from a dev team which works on a similar product
 
 ## Initial UX:
-![Mock-up Welcome](./assets/documentation/MockUp_Welcome.Splash.png =100x20 "Mock-up Welcome")
-![Mock-up Quiz](./assets/documentation/MockUp_Welcome.Quiz.png =100x20 "Mock-up Quiz")
-![Mock-up Question Answer](./assets/documentation/MockUp_QuestionAndAnswer.png =100x20 "Mock-up Question Answer")
-![Mock-up Results](./assets/documentation/MockUp_Results.png "Mock-up Results")
+<img src="./assets/documentation/MockUp_Welcome.Splash.png" width=100 height=100 alt="Mock-up Welcome">
+<img src="./assets/documentation/MockUp_Welcome.Quiz.png" width=100 height=100 alt="Mock-up Quiz">
+<img src="./assets/documentation/MockUp_QuestionAndAnswer.png" width=100 height=100 alt="Mock-up Question Answer">
+<img src="./assets/documentation/MockUp_Results.png" alt="Mock-up Results" width=100 height=100>
 
 ## Functionality:
-![Prioritized User Stories](./assets/documentation/PrioritizedUserStories.png =100x20 "Prioritized User Stories")
-![Requirements](./assets/documentation/Reqs_Requirements.png =100x20 "Requirements")
-![Reqs Workflow](./assets/documentation/Reqs_WorkFlow.png =100x20 "Requirements for Workflow")
+<img src="./assets/documentation/PrioritizedUserStories.png" width=100 height=100 alt="Prioritized User Stories">
+<img src="./assets/documentation/Reqs_Requirements.png" width=100 height=100 alt="Requirements">
+<img src="./assets/documentation/Reqs_WorkFlow.png" width=100 height=100 alt="Requirements for Workflow">
 
 
 ## Development Story:
@@ -68,8 +68,9 @@
 * utilizing a KanBan Board, the development was broken into phases
 * working through the burn chart, I was able to break the project into bite size chunks
 * working from the server side development through to the client-side, features were implemented based on priority
-![KanBan BurnChart Workflow](./assets/documentation/ImplementationProcess_BurnChart.png =100x20 "KanBan BurnChart")
-![KanBan BurnChart Workflow](./assets/documentation/Implementation_BurnChart_Process.png =100x20 "KanBan BurnChart Workflow")
+
+<img src="./assets/documentation/ImplementationProcess_BurnChart.png" width=100 height=100 alt="KanBan BurnChart">
+<img src="./assets/documentation/Implementation_BurnChart_Process.png" width=100 height=100 alt="KanBan BurnChart Workflow">
 
 ## Vision:
 * The Quiz application still requires a significant amount of improvements in order to be more user friendly.  
